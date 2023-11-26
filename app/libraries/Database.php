@@ -1,25 +1,25 @@
 <?php
 
-class database
+class Database
 {
-    private $dbHost = DB_HOST;
-    private $dbUser = DB_USER;
-    private $dbPass = DB_PASS;
-    private $dbName = DB_NAME;
     private $dbHandler;
     private $statement;
 
-
-
     public function __construct()
     {
-        $conn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName . ";charset=UTF8";
+        $conn = 'mysql:host=' . DB_HOST . ';dbname='. DB_NAME . ';charset=UTF8';
 
         try {
-            $this->dbHandler = new PDO($conn, $this->dbUser, $this->dbPass);
-        } catch (PDOException $e) {
-            echo "<h1>Interne Server Error, neem contact op met de Database Beheerder</h1>";
-            console_log($e->getMessage());
+            $this->dbHandler = new PDO($conn, DB_USER, DB_PASS);
+
+            if ($this->dbHandler) {
+                // echo "Verbinding met de database is gelukt";
+            } else {
+                echo "Interne server-error";
+            }
+
+        } catch(PDOException $e) {
+            echo $e->getMessage();
         }
     }
 
@@ -28,20 +28,22 @@ class database
         $this->statement = $this->dbHandler->prepare($sql);
     }
 
-    public function execute()
+    public function bind($param, $value)
     {
-        return $this->statement->execute();
+        $this->statement->bindValue($param, $value);
     }
-
+    
     public function resultSet()
     {
-        $this->execute();
+        $this->statement->execute();
         return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function resultSetAssoc()
+    public function single()
     {
-        $this->execute();
-        return $this->statement->fetch(PDO::FETCH_ASSOC);
+        $this->statement->execute();
+        return $this->statement->fetch(PDO::FETCH_OBJ);
     }
+
+
 }
