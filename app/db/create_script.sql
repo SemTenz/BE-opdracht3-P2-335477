@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS `InstructeursInDienst`;
-CREATE DATABASE IF NOT EXISTS `InstructeursInDienst`;
-Use `InstructeursInDienst`;
+DROP DATABASE IF EXISTS `be-opdracht-03`;
+CREATE DATABASE IF NOT EXISTS `be-opdracht-03`;
+Use `be-opdracht-03`;
 
 DROP TABLE IF EXISTS TypeVoertuig;
 CREATE TABLE IF NOT EXISTS TypeVoertuig(

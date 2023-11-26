@@ -1,4 +1,4 @@
-USE instructeursindienst;
+USE 'be-opdracht-03';
 
 DROP TABLE IF EXISTS VoertuigInstructeur;
 CREATE TABLE IF NOT EXISTS VoertuigInstructeur(
