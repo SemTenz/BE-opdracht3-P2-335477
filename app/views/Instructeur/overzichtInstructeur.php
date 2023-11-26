@@ -17,12 +17,10 @@
 
     <div class="container mx-auto p-3">
         <u><?= $data['title']; ?></u><br>
-        <!-- button to take me home  --><br>
+        <br>
         <a href="<?= URLROOT; ?>">Back</a>
         <br>
-        <!-- aantal instructeurs -->
         <p>Er zijn <?= $data['totalInstructeurs']; ?> instructeurs</p>
-        <!-- Your content goes here -->
         <table>
             <thead>
                 <th>Voornaam</th>
@@ -52,7 +50,7 @@
                             </a>
                         </td>
                         <td>
-                            <!-- check if instructeatr is actief -->
+                            
                             <?php if ($instructeur->IsActief == 1) { ?>
                                 <a href='<?= URLROOT ?>/instructeur/ziekverlof/<?= $instructeur->Id ?>'>
                                     <i class="bi bi-hand-thumbs-up"></i>

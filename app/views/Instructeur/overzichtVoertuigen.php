@@ -32,7 +32,6 @@
                 </tr>
             </tbody>
         </table>
-        <!-- button with cool styling and top margin-->
         <a href="<?= URLROOT; ?>/instructeur/overzichtinstructeur" class="btn btn-primary mt-4">Back </a>
         <?php if ($data['instucteurInfo']->IsActief == 1) : ?>
             <a href="<?= URLROOT; ?>/instructeur/ziekverlof/<?= $data['instructeaurId'] ?>" class="btn btn-primary mt-4">Ziekverlof </a>

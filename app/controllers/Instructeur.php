@@ -13,8 +13,6 @@ class Instructeur extends BaseController
     {
         $result = $this->instructeurModel->getInstructeurs();
 
-        //  var_dump($result);
-
         $data = [
             'title' => 'Instructeurs in dienst',
             'rows' => $result,
@@ -34,16 +32,12 @@ class Instructeur extends BaseController
         $datumInDienst = $instructeurInfo->DatumInDienst;
         $aantalSterren = $instructeurInfo->AantalSterren;
 
-        /**
-         * We laten de model alle gegevens ophalen uit de database
-         */
+       
         $result = $this->instructeurModel->getToegewezenVoertuigen($InstructeaurId);
 
         $tableRows = "";
         if ($instructeurInfo->IsActief == 0) {
-            /**
-             * Als er geen toegewezen voertuigen zijn komt de onderstaande tekst in de tabel
-             */
+           
             $tableRows = "<tr>
             <td colspan='6'>
                 Deze instructeur is niet actief
@@ -56,15 +50,10 @@ class Instructeur extends BaseController
             </td>
           </tr>";
         } else {
-            /**
-             * Bouw de rows op in een foreach-loop en stop deze in de variabele
-             * $tabelRows
-             */
+           
             foreach ($result as $voertuig) {
 
-                /**
-                 * Zet de datum in het juiste format
-                 */
+               
                 $date_formatted = date_format(date_create($voertuig->Bouwjaar), 'd-m-Y');
 
                 $tableRows .= "<tr>
@@ -154,13 +143,13 @@ class Instructeur extends BaseController
         $instructeurInfo = $this->instructeurModel->getInstructeurById($InstructeaurId);
         $naam = $instructeurInfo->Voornaam . " " . $instructeurInfo->Tussenvoegsel . " " . $instructeurInfo->Achternaam;
         $this->instructeurModel->deleteVoertuig($Id, $InstructeaurId);
-        // show message and wait for 2 seconds
+        
         echo "<div class='alert alert-success' role='alert'>
                 Voertuig is verwijderd van $naam
               </div>";
 
         header("refresh:2;url=" . URLROOT . "/instructeur/overzichtvoertuigen/$InstructeaurId");
-        // $this->overzichtVoertuigen($InstructeaurId, 'Het voertuig is verwijderd');
+        
     }
 
     function nietGebruiktVoertuigen($InstructeaurId)
