@@ -157,7 +157,7 @@ class Instructeur extends BaseController
         $nietGebruiktVoeruigen = $this->instructeurModel->nietGebruiktVoertuig();
         $instructeurInfo = $this->instructeurModel->getInstructeurById($InstructeaurId);
 
-        // var_dump($instructeurInfo);
+
         $naam = $instructeurInfo->Voornaam . " " . $instructeurInfo->Tussenvoegsel . " " . $instructeurInfo->Achternaam;
         $datumInDienst = $instructeurInfo->DatumInDienst;
         $aantalSterren = $instructeurInfo->AantalSterren;
